@@ -21,7 +21,10 @@ app.on('ready', () => {
     : 'iconTemplate.png';
   const iconPath = path.join(__dirname, `./src/assets/${iconName}`)
   tray = new Tray(iconPath);
-  tray.on('click', () => {
-    mainWindow.show();
+  tray.on('click', (event, bounds) => {
+
+    mainWindow.isVisible()
+      ? mainWindow.hide()
+      : mainWindow.show();
   });
 });
